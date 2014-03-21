@@ -1,5 +1,8 @@
 // uses generic T
 public class Quicksort<T extends Comparable>{
+	// Returns a vector index i in which all elements in indices
+	// < i are less than the value of i, and all elements in indices
+	// > i are greater than the value of i
 	private int partition(T[] array, int left, int right) {
 		T pivot = array[right];
 		int i   = left;
@@ -19,14 +22,17 @@ public class Quicksort<T extends Comparable>{
 		return i;
 	}
 
+	// Calls private quickSort_ method
 	public void quickSort (T[] array) {
 		this.quickSort_(array, 0, array.length-1);
 	}
+
+	// Recursively calls quicksort on the smaller half of the partitioned index
 	private void quickSort_(T[] array, int left, int right) {
 		while (left < right)
 		{
 			int pivot = partition(array, left, right);
-			
+
 			// recursively calls quicksort on lesser half of array
 			if ((pivot-left) < (right-pivot))
 			{

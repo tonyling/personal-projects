@@ -1,27 +1,28 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
-//#include <time>
 #include "quicksort.cpp"
 
+// Fill a vector with random values
 template <typename T>
 void gen_rand_vector(std::vector<T> &array)
 {
 	unsigned int size=array.size();
 	for (unsigned i = 0; i < size; i++)
 	{
-		array[i]=i;
+		array[i] = i;
 	}
 
 	for (unsigned i = 0; i < size; i++)
 	{
-		int index = rand()%size;
-		T temp = array[i];
-		array[i]=array[index];
-		array[index]= temp;
+		int index    = rand()%size;
+		T temp       = array[i];
+		array[i]     = array[index];
+		array[index] = temp;
 	}
 }
 
+// Prints elements in vector
 template <typename T>
 void print_vector(std::vector<T> &vec)
 {
@@ -30,11 +31,13 @@ void print_vector(std::vector<T> &vec)
 		std::cout << "  "<< vec[i] << std::endl;
 	}
 }
+
 int main(int argc, char const *argv[])
 {
 	srand(time(NULL));
 	std::vector<int> array;
 	array.resize(10);
+
 	std::cout << "Randomized array:" << std::endl;
 	gen_rand_vector(array);
 	print_vector(array);
